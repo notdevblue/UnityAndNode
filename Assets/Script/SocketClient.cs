@@ -34,6 +34,8 @@ public class SocketClient : MonoBehaviour
     {
         // 처리할 프로토콜을 여기에 써주면 됨
         handlerDictionary.Add("CHAT", handlers.GetComponent<ChatHandler>());
+        handlerDictionary.Add("LOGIN", handlers.GetComponent<LoginHandler>());
+
         DontDestroyOnLoad(gameObject);
         if(instance != null)
         {
@@ -49,7 +51,7 @@ public class SocketClient : MonoBehaviour
             RecvData((WebSocket)sender, e);
         };
         
-        webSocket.Send("CHAT:Hello WebServer!");
+        //webSocket.Send("CHAT:Hello WebServer!");
 
         
     }

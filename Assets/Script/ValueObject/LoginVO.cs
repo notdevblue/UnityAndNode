@@ -6,7 +6,6 @@ public enum TankCategory
 
 public class LoginVO
 {
-    public string type;
     public TankCategory tank;
     public string name;
 
@@ -16,9 +15,8 @@ public class LoginVO
 
     }
 
-    public LoginVO(string type, TankCategory tank, string name)
+    public LoginVO(TankCategory tank, string name)
     {
-        this.type = type;
         this.tank = tank;
         this.name = name;
     }

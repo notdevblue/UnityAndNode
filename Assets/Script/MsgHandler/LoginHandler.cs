@@ -29,8 +29,29 @@ public class LoginHandler : MonoBehaviour, IMsgHandler
             {
                 img.sprite = selectedImages[1];
             }
-                
+
             selectImageHolders[(int)TankCategory.Red].sprite = selectedImages[0];
+        });
+
+        loginBtn.onClick.AddListener(() =>
+        {
+            string name = nameInput.text;
+
+            if(name == "")
+            {
+                PopupManager.OpenPopup(IconCategory.SYSTEM, "이름은 반드시 입력해야 합니다.");
+                return;
+            }
+
+            LoginVO loginVO = new LoginVO(tank, name);
+            string payload = JsonUtility.ToJson(loginVO);
+            
+            DataVO dataVO = new DataVO();
+            dataVO.type = "LOGIN";
+            dataVO.payload = payload;
+            string json = JsonUtility.ToJson(dataVO);
+
+            SocketClient.SendDataToSocket(json);
         });
 
         blueTankBtn.onClick.AddListener(() =>
@@ -47,6 +68,9 @@ public class LoginHandler : MonoBehaviour, IMsgHandler
 
     public void HandleMsg(string payload)
     {
+        TransformVO vo = JsonUtility.FromJson<TransformVO>(payload);
+
+        //GameManager.StartGame();
 
     }
 

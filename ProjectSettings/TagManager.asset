@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GROUND
+    uniqueID: 111694187
+    locked: 0
+  - name: TANK
+    uniqueID: 1687316291
+    locked: 0
+  - name: EFFECT
+    uniqueID: 149375873
+    locked: 0
