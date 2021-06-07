@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
                 rpc.InitPlayer(data.position, data.tank, false); // 내가 조종할 탱크
                 followCam.Follow = rpc.transform;
 
+                UIManager.SetInfoUI(rpc.transform, data.name);
+
                 gameStart = true;
             }
         }

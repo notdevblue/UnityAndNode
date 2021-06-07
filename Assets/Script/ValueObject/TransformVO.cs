@@ -9,7 +9,8 @@ public class TransformVO
     public Vector3 turretRotation;
     public int socketId;
     public TankCategory tank;
-    
+    public string name;
+
     public TransformVO(Vector3 pos, Vector3 rot, Vector3 turretRot, int socketId, TankCategory tank)
     {
         this.position       = pos;
