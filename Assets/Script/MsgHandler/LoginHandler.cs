@@ -70,6 +70,7 @@ public class LoginHandler : MonoBehaviour, IMsgHandler
     {
         TransformVO vo = JsonUtility.FromJson<TransformVO>(payload);
 
+        GameManager.GameStart(vo);
         //GameManager.StartGame();
 
     }

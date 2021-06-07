@@ -37,8 +37,8 @@ public class PlayerMove : MonoBehaviour
         Vector3 target = playerInput.mousePos;
         Vector3 v = target - transform.position; // <= 방향백터
 
-        float degree = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;
-        float rot = Mathf.LerpAngle(turret.eulerAngles.z, -degree, Time.deltaTime * turretRotateSpeed);
+        float degree = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+        float rot = Mathf.LerpAngle(turret.eulerAngles.z, degree - 90, Time.deltaTime * turretRotateSpeed);
 
         turret.eulerAngles = new Vector3(0, 0, rot);
     }
