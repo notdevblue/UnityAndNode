@@ -7,13 +7,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public GameObject infoPrefab;
-    private CanvasGroup cvsLogin;
+    public CanvasGroup cvsLogin;
 
     private void Awake()
     {
         instance = this;
         PoolManager.CratePool<InfoUI>(infoPrefab, transform, 8); // 8개의 HP바와 Text 제작
-        cvsLogin = GetComponent<CanvasGroup>();
         cvsLogin.alpha = 1;
         cvsLogin.interactable = true;
         cvsLogin.blocksRaycasts = true;
@@ -21,10 +20,11 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public static void SetInfoUI(Transform player, string name)
+    public static InfoUI SetInfoUI(Transform player, string name)
     {
         InfoUI ui = PoolManager.GetItem<InfoUI>();
         ui.SetTarget(player, name);
+        return ui;
     }
 
     public static void CloseLoginPanel()

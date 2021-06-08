@@ -19,16 +19,26 @@ public class PlayerRPC : MonoBehaviour
 
     private WaitForSeconds ws = new WaitForSeconds(1 / 5); // 200ms 간격으로 자신 데이터 갱신
 
+    // 데이터 전송시 변경값들
+    private Vector3 targetPosition;
+    private Vector3 targetRotation;
+    private Vector3 targetTurretRotation;
+
+    public float lerpSpeed = 4.0f;
+
+    private InfoUI ui = null;
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         move = GetComponent<PlayerMove>();
     }
 
-    public void InitPlayer(Vector3 pos, TankCategory tank, bool remote = false)
+    public void InitPlayer(Vector3 pos, TankCategory tank, InfoUI ui, bool remote = false)
     {
         bodyRenderer.sprite = bodys[(int)tank];
         turretRenderer.sprite = turrets[(int)tank];
+        transform.position = pos;
+        this.ui = ui;
 
         isRemote = remote;
         if(isRemote)
@@ -40,16 +50,15 @@ public class PlayerRPC : MonoBehaviour
         {
             input.enabled = true;
             move.enabled = true;
-            //StartCoroutine(SendData());
+            StartCoroutine(SendData());
         }
 
 
     }
 
-
     IEnumerator SendData()
     {
-        int socketId = 0;
+        int socketId = GameManager.instance.socketId;
 
         while(true)
         {
@@ -64,5 +73,36 @@ public class PlayerRPC : MonoBehaviour
 
 
         }
+    }
+
+
+    public void SetTransform(Vector3 pos, Vector3 rotation, Vector3 turretRotation)
+    {
+        if (isRemote)
+        {
+            targetPosition = pos;
+            targetRotation = rotation;
+            targetTurretRotation = turretRotation;
+        }
+    }
+
+    private void Update()
+    {
+        if(isRemote)
+        {
+            // 
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);
+            float rot = Mathf.LerpAngle(transform.eulerAngles.z, targetRotation.z, Time.deltaTime * lerpSpeed);
+            transform.eulerAngles = new Vector3(0, 0, rot);
+            float tRot = Mathf.LerpAngle(turretRenderer.transform.eulerAngles.z, targetTurretRotation.z, Time.deltaTime * lerpSpeed);
+            turretRenderer.transform.eulerAngles = new Vector3(0, 0, tRot);
+
+        }
+    }
+
+    public void SetDisable()
+    {
+        gameObject.SetActive(false);
+        ui.gameObject.SetActive(false);
     }
 }

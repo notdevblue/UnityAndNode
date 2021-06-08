@@ -798,7 +798,6 @@ GameObject:
   - component: {fileID: 594648509}
   - component: {fileID: 594648508}
   - component: {fileID: 594648512}
-  - component: {fileID: 594648513}
   m_Layer: 5
   m_Name: cvsLogin
   m_TagString: Untagged
@@ -899,19 +898,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &594648513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594648507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e3fdf00035ef1f41869da1fbf5ac357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infoPrefab: {fileID: 1450764823002213340, guid: b3412ca98b59b684dbb19cb5894c7983, type: 3}
 --- !u!1 &717093839
 GameObject:
   m_ObjectHideFlags: 0
@@ -13177,6 +13163,8 @@ GameObject:
   - component: {fileID: 1497374563}
   - component: {fileID: 1497374562}
   - component: {fileID: 1497374564}
+  - component: {fileID: 1497374565}
+  - component: {fileID: 1497374566}
   m_Layer: 0
   m_Name: HandlerObject
   m_TagString: Untagged
@@ -13232,6 +13220,30 @@ MonoBehaviour:
   redTankBtn: {fileID: 1200216607}
   blueTankBtn: {fileID: 862949097}
   loginBtn: {fileID: 1037736208}
+--- !u!114 &1497374565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497374561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc6be11b8a83a34781b92f88c181d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1497374566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497374561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500e9026847782e45bb3f59b7df0c2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1557385651
 GameObject:
   m_ObjectHideFlags: 0
@@ -13484,6 +13496,7 @@ GameObject:
   - component: {fileID: 1691501204}
   - component: {fileID: 1691501203}
   - component: {fileID: 1691501202}
+  - component: {fileID: 1691501206}
   m_Layer: 5
   m_Name: cvsInfo
   m_TagString: Untagged
@@ -13571,6 +13584,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1691501206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691501201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3fdf00035ef1f41869da1fbf5ac357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoPrefab: {fileID: 1450764823002213340, guid: b3412ca98b59b684dbb19cb5894c7983, type: 3}
+  cvsLogin: {fileID: 594648512}
 --- !u!1 &1835939120
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,6 +35,8 @@ public class SocketClient : MonoBehaviour
         // 처리할 프로토콜을 여기에 써주면 됨
         handlerDictionary.Add("CHAT", handlers.GetComponent<ChatHandler>());
         handlerDictionary.Add("LOGIN", handlers.GetComponent<LoginHandler>());
+        handlerDictionary.Add("REFRESH", handlers.GetComponent<RefreshHandler>());
+        handlerDictionary.Add("DISCONNECT", handlers.GetComponent<DisconnHandler>());
 
         DontDestroyOnLoad(gameObject);
         if(instance != null)

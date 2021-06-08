@@ -56,16 +56,22 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Player\PlayerRPC\PlayerRPC.cs" />
     <Compile Include="Assets\Script\ValueObject\TransformVO.cs" />
     <Compile Include="Assets\Script\Manager\PopupManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Script\Manager\GameManager.cs" />
     <Compile Include="Assets\Script\MsgHandler\LoginHandler.cs" />
     <Compile Include="Assets\Script\ValueObject\LoginVO.cs" />
+    <Compile Include="Assets\Script\Manager\ObjectPool.cs" />
     <Compile Include="Assets\Script\SocketClient.cs" />
     <Compile Include="Assets\Script\Interface\IMsgHandler.cs" />
+    <Compile Include="Assets\Script\Manager\IPool.cs" />
     <Compile Include="Assets\Script\MsgHandler\ChatHandler.cs" />
     <Compile Include="Assets\Script\ValueObject\DataVO.cs" />
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\Script\UI\InfoUI.cs" />
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Script\JsonTest.cs" />
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
@@ -75,13 +81,10 @@
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Script\DeleTest.cs" />
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\Script\UI\InfoUI.cs" />
-    <Compile Include="Assets\Script\Player\PlayerRPC\PlayerRPC.cs" />
-    <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\Manager\ObjectPool.cs" />
     <Compile Include="Assets\Script\Manager\PoolManager.cs" />
-    <Compile Include="Assets\Script\Manager\IPool.cs" />
-    <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\MsgHandler\RefreshHandler.cs" />
+    <Compile Include="Assets\Script\ValueObject\RefreshVO.cs" />
+    <Compile Include="Assets\Script\MsgHandler\DisconnHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_External\Demigiant\DOTween\DOTween.XML" />
