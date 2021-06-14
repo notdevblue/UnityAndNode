@@ -63,9 +63,11 @@
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
     <Compile Include="Assets\Script\MsgHandler\LoginHandler.cs" />
+    <Compile Include="Assets\Script\MsgHandler\RefreshHandler.cs" />
     <Compile Include="Assets\Script\ValueObject\LoginVO.cs" />
     <Compile Include="Assets\Script\Manager\ObjectPool.cs" />
     <Compile Include="Assets\Script\SocketClient.cs" />
+    <Compile Include="Assets\Script\MsgHandler\DisconnHandler.cs" />
     <Compile Include="Assets\Script\Interface\IMsgHandler.cs" />
     <Compile Include="Assets\Script\Manager\IPool.cs" />
     <Compile Include="Assets\Script\MsgHandler\ChatHandler.cs" />
@@ -81,10 +83,18 @@
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Script\DeleTest.cs" />
     <Compile Include="Assets\_External\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\Script\Manager\PoolManager.cs" />
-    <Compile Include="Assets\Script\MsgHandler\RefreshHandler.cs" />
     <Compile Include="Assets\Script\ValueObject\RefreshVO.cs" />
-    <Compile Include="Assets\Script\MsgHandler\DisconnHandler.cs" />
+    <Compile Include="Assets\Script\Manager\PoolManager.cs" />
+    <Compile Include="Assets\Script\Effects\Explosion.cs" />
+    <Compile Include="Assets\Script\Manager\EffectsManager.cs" />
+    <Compile Include="Assets\Script\Interface\IDamageable.cs" />
+    <Compile Include="Assets\Script\Projectile\BulletController.cs" />
+    <Compile Include="Assets\Script\MsgHandler\InitHandler.cs" />
+    <Compile Include="Assets\Script\ValueObject\TankDataVO.cs" />
+    <Compile Include="Assets\Script\ValueObject\TankDataListVO.cs" />
+    <Compile Include="Assets\Script\Player\PlayerFire.cs" />
+    <Compile Include="Assets\Script\Manager\BulletManager.cs" />
+    <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_External\Demigiant\DOTween\DOTween.XML" />

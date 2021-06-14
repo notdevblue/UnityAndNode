@@ -47,5 +47,12 @@ public class PlayerMove : MonoBehaviour
     {
         rigid.velocity = moveDirection * speed;
     }
+
+    public void SetMoveScript(TankDataVO data)
+    {
+        speed = data.movingSpeed;
+        rotateSpeed = data.rotateSpeed;
+        turretRotateSpeed = data.turretRotateSpeed;
+    }
 }
 

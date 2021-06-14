@@ -37,6 +37,7 @@ public class SocketClient : MonoBehaviour
         handlerDictionary.Add("LOGIN", handlers.GetComponent<LoginHandler>());
         handlerDictionary.Add("REFRESH", handlers.GetComponent<RefreshHandler>());
         handlerDictionary.Add("DISCONNECT", handlers.GetComponent<DisconnHandler>());
+        handlerDictionary.Add("INITDATA", handlers.GetComponent<InitHandler>());
 
         DontDestroyOnLoad(gameObject);
         if(instance != null)

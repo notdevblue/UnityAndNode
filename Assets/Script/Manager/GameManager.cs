@@ -22,6 +22,23 @@ public class GameManager : MonoBehaviour
     private List<TransformVO> dataList;
     private bool needRefresh = false; // 갱신필요여부
 
+    // 탱크들의 데이터
+
+    public static int PlayerLayer;
+    public static int EnemyLayer;
+
+    public static Dictionary<TankCategory, TankDataVO> tankDataDic = new Dictionary<TankCategory, TankDataVO>();
+
+    public static void InitGameData(string payload)
+    {
+        List<TankDataVO> list = JsonUtility.FromJson<TankDataListVO>(payload).tanks;
+
+        foreach(TankDataVO t in list)
+        {
+            tankDataDic.Add(t.tank, t);
+        }
+    }
+
     // 접속해있는 플레이어들을 저장하는 리스트
     private Dictionary<int, PlayerRPC> playerList = new Dictionary<int, PlayerRPC>();
 
@@ -36,6 +53,10 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         PoolManager.CratePool<PlayerRPC>(tankPrefab, transform, 8); // 8개의 탱크를 미리 만드는 풀
+
+        PlayerLayer = LayerMask.NameToLayer("PLAYER");
+        EnemyLayer = LayerMask.NameToLayer("ENEMY");
+
     }
 
     public static void GameStart(TransformVO data)
