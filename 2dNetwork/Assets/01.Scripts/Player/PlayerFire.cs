@@ -49,11 +49,12 @@ public class PlayerFire : MonoBehaviour
     //이 함수는 나중에 Remote시에는 변경되어야 해.
     public void Fire()
     {
+        int socketId = GameManager.instance.socketId;
         switch (tankCategory)
         {
             case TankCategory.Blue:
                 BulletController bc = BulletManager.GetBullet();
-                bc.ResetData(firePosition.position, firePosition.up, bulletSpeed, bulletDamage, isEnemy);
+                bc.ResetData(socketId, firePosition.position, firePosition.up, bulletSpeed, bulletDamage, isEnemy);
                 SendFireData(firePosition.position, firePosition.up, bulletSpeed, bulletDamage);
                 break;
             case TankCategory.Red:
@@ -61,7 +62,7 @@ public class PlayerFire : MonoBehaviour
                 for (int i = 0; i < 2; i++)
                 {
                     BulletController bc2 = BulletManager.GetBullet();
-                    bc2.ResetData(firePosition.position + firePosition.right * (i * 0.3f - 0.15f),
+                    bc2.ResetData(socketId, firePosition.position + firePosition.right * (i * 0.3f - 0.15f),
                         firePosition.up, bulletSpeed, bulletDamage, isEnemy);
                     SendFireData(firePosition.position + firePosition.right * (i * 0.3f - 0.15f), 
                         firePosition.up, bulletSpeed, bulletDamage);

@@ -155,6 +155,8 @@ public class GameManager : MonoBehaviour
                         {
                             p.SetTransform(tv.position, tv.rotation, tv.turretRotation);
                         }
+
+                        Debug.Log(tv.socketId + " , " + tv.kill + " , " + tv.death);
                     }
                 }
                 needRefresh = false;

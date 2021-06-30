@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         this.ui = ui;
     }
 
-    public void OnDamage(int damage, Vector2 powerDir, bool isEnemy)
+    public void OnDamage(int damage, Vector2 powerDir, bool isEnemy, int shooterId)
     {
         if (rpc.isRemote) return; // 원격 탱크는 HP를 건드리지 않는다
 
@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         if(currentHP <= 0)
         {
-            Die();
+            Die(shooterId);
         }
     }
 
@@ -55,8 +55,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         ui.UpdateHPBar((float)currentHP / maxHP);
     }
 
-    public void Die()
+    public void Die(int shooterId = 0)
     {
+        if (rpc.isDead) return;
+
         //폭발 이펙트 재생이 필요하다
         MassiveExplosion mExp = EffectManager.GetMassiveExplosion();
         mExp.ResetPosition(transform.position);
@@ -66,16 +68,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         if(!isEnemy)
         {
-            DeadVO vo = new DeadVO(GameManager.instance.socketId);
+            DeadVO vo = new DeadVO(GameManager.instance.socketId, shooterId);
             string payload = JsonUtility.ToJson(vo);
             DataVO dataVO = new DataVO();
             dataVO.type = "DEAD";
             dataVO.payload = payload;
-
+            Debug.Log(JsonUtility.ToJson(dataVO));
             SocketClient.SendDataToSocket(JsonUtility.ToJson(dataVO));
 
             GameManager.instance.SetPlayerDead();
-
+            rpc.isDead = true;
             rpc.SetScript(false);
         }
 

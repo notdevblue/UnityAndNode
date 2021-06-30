@@ -10,6 +10,8 @@ public class TransformVO
     public int socketId;
     public TankCategory tank;
     public string name;
+    public int kill = 0;
+    public int death = 0;
 
     public TransformVO(Vector3 position, Vector3 rotation, Vector3 turretRotation, int socketId, TankCategory tank)
     {

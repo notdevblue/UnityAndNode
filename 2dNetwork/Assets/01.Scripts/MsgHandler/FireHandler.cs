@@ -24,7 +24,7 @@ public class FireHandler : MonoBehaviour, IMsgHandler
             {
                 FireInfoVO vo = dataQueue.Dequeue();
                 BulletController bc = BulletManager.GetBullet();
-                bc.ResetData(vo.position, vo.direction, vo.speed, vo.damage, true);
+                bc.ResetData(vo.socketId, vo.position, vo.direction, vo.speed, vo.damage, true);
 
                 //여기서도 뭔가를 해줘야 해.
                 //해당 소켓의 rpc를 가져와야하는데

@@ -11,13 +11,16 @@ public class BulletController : MonoBehaviour
     Rigidbody2D rigid;
     public Vector2 dir;
 
+    private int ownerId;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void ResetData(Vector3 position, Vector2 dir, float speed, int damage, bool isEnemy)
+    public void ResetData(int owner, Vector3 position, Vector2 dir, float speed, int damage, bool isEnemy)
     {
+        ownerId = owner;
         transform.position = position;
         this.dir = dir.normalized;
         this.moveSpeed = speed;
@@ -37,7 +40,7 @@ public class BulletController : MonoBehaviour
         IDamageable id = collision.GetComponent<IDamageable>();
         if(id != null)
         {
-            id.OnDamage(damage, dir, isEnemy);
+            id.OnDamage(damage, dir, isEnemy, ownerId);
         }
 
         Explosion exp = EffectManager.GetExplosion();

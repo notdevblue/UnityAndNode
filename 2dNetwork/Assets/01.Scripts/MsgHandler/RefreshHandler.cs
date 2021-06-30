@@ -9,5 +9,6 @@ public class RefreshHandler : MonoBehaviour, IMsgHandler
         //payload를 c# 클래스로 파싱해서 처리해야해
         RefreshVO vo = JsonUtility.FromJson<RefreshVO>(payload);
         GameManager.SetRefreshData(vo.dataList); //데이터리스트를 처리하라고 보내준다.
+        ScoreBoardManager.ResetBoard(vo.dataList);
     }
 }

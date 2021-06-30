@@ -49,6 +49,8 @@ wsService.on("connection", socket => {
 
             if (data.type === "LOGIN") {
                 let userData = LoginHandler(data.payload, socket);
+                userData.kill = 0;
+                userData.death = 0;
                 userList[socket.id] = userData; // 로그인한 유저의 데이터를 관리한다.
                 return;
             }
@@ -65,16 +67,24 @@ wsService.on("connection", socket => {
                 return;
             }
 
-            if (data.type === "FIRE" || data.type === "HIT" || data.type === "DEAD" || data.type === "RESPAWN") {
+            if (data.type === "FIRE" || data.type === "HIT" || data.type === "RESPAWN") {
                 //let fireInfo = JSON.parse(data.payload);
                 //여기서 나를 제외한 모든 소켓에 해당 데이터를 쏴주면 된다.
                 broadcast(msg, socket);
                 return;
             }
 
+            if (data.type === "DEAD") {
+                let deadVO = JSON.parse(data.payload);
+                userList[deadVO.socketId].death++;
+                userList[deadVO.killerId].kill++;
+                broadcast(msg, socket);
+                return;
+            }
+
         } catch (err) {
             console.log(`잘못된 요청 발생 : ${msg}`);
-            //console.log(err);
+            console.log(err);
         }
     });
 });
